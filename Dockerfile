@@ -9,8 +9,8 @@ COPY package.json ./
 
 # Install Node.js dependencies
 RUN npm install
-RUN npx playwright install --with-deps
-RUN npm install --save-dev --save-exact prettier
+#RUN npx playwright install --with-deps
+#RUN npm install --save-dev --save-exact prettier
 
 # Copy the rest of the application code to the container
 #COPY . .
