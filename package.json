@@ -10,17 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "express": "^4.16.3",
-    "@azure/identity": "^3.1.3",
-    "@azure/storage-blob": "^12.12.0",
-    "adm-zip": "^0.5.10",
-    "properties-reader": "^2.2.0"
+    "express": "^4.16.3"
   },
   "devDependencies": {
     "expect": "^22.4.3",
     "mocha": "^5.0.5",
-    "supertest": "^3.0.0",
-    "@playwright/test": "^1.31.0",
-    "prettier": "2.8.4"
+    "supertest": "^3.0.0"
   }
 }
