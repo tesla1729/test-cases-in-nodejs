@@ -3,9 +3,9 @@ FROM node:latest
 
 # Set the working directory to /app
 WORKDIR /app
-
+RUN CHMOD 777 /app
 # Copy package.json and package-lock.json to the container
-COPY package.json ./
+COPY . .
 
 # Install Node.js dependencies
 RUN npm install
