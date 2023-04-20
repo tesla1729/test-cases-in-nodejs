@@ -1,19 +1,13 @@
-# Base image
-FROM node:latest
+FROM ubuntu:latest
 
-# Set the working directory to /app
+# Create a directory and give any user read/write access to it
+RUN mkdir /app && \
+    chmod -R 777 /app
+
+# Set the working directory to the newly created directory
 WORKDIR /app
-RUN CHMOD 777 /app
-# Copy package.json and package-lock.json to the container
-COPY . .
 
-# Install Node.js dependencies
-RUN npm install
-#RUN npx playwright install --with-deps
-#RUN npm install --save-dev --save-exact prettier
+# Copy your application files to the working directory
+COPY . /app
 
-# Copy the rest of the application code to the container
-#COPY . .
-
-# Set the default command to run npm test
-CMD ["sleep", "10000"]
+# The rest of your Dockerfile instructions...
