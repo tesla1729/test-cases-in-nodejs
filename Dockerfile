@@ -1,13 +1,25 @@
-FROM ubuntu:latest
+FROM node:18
 
-# Create a directory and give any user read/write access to it
-RUN mkdir /app && \
-    chmod -R 777 /app
+RUN apt-get update && apt-get install -y \
+    curl \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-# Set the working directory to the newly created directory
+RUN apt-get update && apt-get install -y gnupg2
+
+RUN curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64 \
+    && chmod +x /usr/local/bin/argocd
+    
+# Set the working directory to /app
 WORKDIR /app
 
-# Copy your application files to the working directory
-COPY . /app
+# Copy code to container
+COPY . .
 
-# The rest of your Dockerfile instructions...
+# Install Node.js dependencies
+#RUN make install-playwright
+#RUN make install-report-dependencies
+
+RUN npm install
+# Set the default command to run npm test
+CMD ["sleep", "10000"]
